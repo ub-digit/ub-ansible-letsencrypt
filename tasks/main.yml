@@ -6,15 +6,23 @@
     update_cache: yes
 
 - name: Ensure webroot exists
-  file:
+  ansible.builtin.file:
     path: "{{ le_webroot }}/.well-known/acme-challenge"
     state: directory
     owner: root
     group: root
     mode: "0755"
 
+- name: Ensure certbot deploy hook directory exists
+  ansible.builtin.file:
+    path: /etc/letsencrypt/renewal-hooks/deploy
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
 - name: Ensure Certbot renewal deploy hook to reload Apache
-  template:
+  ansible.builtin.template:
     src: reload-apache.sh.j2
     dest: /etc/letsencrypt/renewal-hooks/deploy/reload-apache.sh
     mode: "0755"

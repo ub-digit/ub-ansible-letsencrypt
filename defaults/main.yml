@@ -1,5 +1,5 @@
 le_email: admin@ub.gu.se
-le_webroot: /opt/gub-apache2/data
+le_webroot: /opt/gub-apache2/webroot
 le_cert_base: /etc/letsencrypt/live
 
 le_domains: []
